@@ -141,5 +141,5 @@
 
   window.setTimeout(() => {
     overlay.classList.remove("active");
-  }, 7200);
+  }, 6000);
 })();
