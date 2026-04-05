@@ -16,7 +16,7 @@
       <div class="container">
         <div class="brand">
           <strong>SM::terminal</strong>
-          <span>Backend &amp; SRE • Linux • Dev0ps</span>
+          <span>Backend &amp; SRE • Linux • DevOps</span>
         </div>
         <nav class="nav-links">
           <a class="active" href="index.html">home</a>
@@ -26,13 +26,58 @@
           <a href="skills.html">skills</a>
           <a href="contact.html">contact</a>
         </nav>
+        <button class="palette-button" type="button" data-palette-open>⌘/Ctrl + K</button>
       </div>
     </header>
+
+    <div class="boot-overlay" id="boot-overlay" aria-hidden="true">
+      <div class="boot-panel">
+        <div class="terminal-top">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <span>boot.log</span>
+        </div>
+        <div class="boot-screen" data-boot-step="boot">
+          <p>$ build-container --profile shelton</p>
+          <div class="boot-progress">
+            <div class="boot-progress-bar" data-progress-bar></div>
+          </div>
+          <ul class="list boot-steps" data-boot-steps>
+            <li data-step>Step 1/6 : FROM ubuntu:24.04</li>
+            <li data-step>Step 2/6 : RUN apt-get update</li>
+            <li data-step class="boot-sub">↳ resolving mirrors</li>
+            <li data-step class="boot-sub">↳ installing build essentials</li>
+            <li data-step>Step 3/6 : RUN install devops-toolkit</li>
+            <li data-step class="boot-sub">↳ adding docker + compose</li>
+            <li data-step class="boot-sub">↳ wiring CI/CD helpers</li>
+            <li data-step>Step 4/6 : RUN add monitoring + logging</li>
+            <li data-step class="boot-sub">↳ shipping logs to observability</li>
+            <li data-step class="boot-sub">↳ warming alert rules</li>
+            <li data-step>Step 5/6 : RUN configure ai-services</li>
+            <li data-step class="boot-sub">↳ prompt safety checks</li>
+            <li data-step class="boot-sub">↳ latency tuning</li>
+            <li data-step>Step 6/6 : RUN launch mission-control</li>
+          </ul>
+        </div>
+        <div class="boot-screen" data-boot-step="ascii">
+          <pre class="ascii-art boot-ascii">
+ __          __  _                             _
+ \ \        / / | |                           | |
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___   | |
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \  | |
+    \  /\  /  __/ | (_| (_) | | | | | |  __/  |_|
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  (_)
+
+       Welcome to Shelton • system online
+          </pre>
+          <p class="ascii-caption">Tip: Use ⌘/Ctrl + K or the command button to navigate.</p>
+        </div>
+      </div>
+    </div>
 
     <main>
       <section class="hero container">
         <div>
-          <p class="prompt">$ whoami <span># backend • sre • dev0ps</span></p>
+          <p class="prompt">$ whoami <span># backend • sre • DevOps</span></p>
           <h1>Shelton Mutambirwa</h1>
           <p>
             Backend &amp; Site Reliability Engineer focused on deploying AI-driven microservices, hardening
@@ -112,11 +157,38 @@
       </section>
     </main>
 
+    <div class="palette" id="command-palette" aria-hidden="true">
+      <div class="palette-backdrop" data-palette-close></div>
+      <div class="palette-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="palette-header">
+          <span>$ command-palette</span>
+          <span class="palette-hint">⌘/Ctrl + K</span>
+        </div>
+        <input
+          class="palette-input"
+          type="text"
+          placeholder="Type a command (projects, skills, resume...)"
+          aria-label="Command palette input"
+        />
+        <p class="palette-help">Type to filter. Press Enter to open the first result. Esc closes.</p>
+        <ul class="palette-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Shelton%20Mutambirwa%20Updated%20-%20Google%20Docs.pdf">Download Resume</a></li>
+        </ul>
+      </div>
+    </div>
+
     <footer class="footer">
       <div class="container">
-        <div>© 2026 Shelton Mutambirwa. Built for Vercel + Linux lovers.</div>
+        <div>© 2026 Shelton Mutambirwa.</div>
         <div class="tagline">$ ssh shelton@devops — ready when you are.</div>
       </div>
     </footer>
+    <script src="assets/js/terminal.js"></script>
   </body>
 </html>
