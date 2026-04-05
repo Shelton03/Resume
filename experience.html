@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Professional experience for Shelton Mutambirwa." />
-    <link rel="icon" href="images/favi.jpg" />
+  <link rel="icon" href="images/favi.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/terminal.css" />
   </head>
   <body>
@@ -13,7 +13,7 @@
       <div class="container">
         <div class="brand">
           <strong>SM::terminal</strong>
-          <span>Backend &amp; SRE • Linux • Dev0ps</span>
+          <span>Backend &amp; SRE • Linux • DevOps</span>
         </div>
         <nav class="nav-links">
           <a href="index.html">home</a>
@@ -23,6 +23,7 @@
           <a href="skills.html">skills</a>
           <a href="contact.html">contact</a>
         </nav>
+        <button class="palette-button" type="button" data-palette-open>⌘/Ctrl + K</button>
       </div>
     </header>
 
@@ -80,11 +81,38 @@
       </section>
     </main>
 
+    <div class="palette" id="command-palette" aria-hidden="true">
+      <div class="palette-backdrop" data-palette-close></div>
+      <div class="palette-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="palette-header">
+          <span>$ command-palette</span>
+          <span class="palette-hint">⌘/Ctrl + K</span>
+        </div>
+        <input
+          class="palette-input"
+          type="text"
+          placeholder="Type a command (projects, skills, resume...)"
+          aria-label="Command palette input"
+        />
+        <p class="palette-help">Type to filter. Press Enter to open the first result. Esc closes.</p>
+        <ul class="palette-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Shelton%20Mutambirwa%20Updated%20-%20Google%20Docs.pdf">Download Resume</a></li>
+        </ul>
+      </div>
+    </div>
+
     <footer class="footer">
       <div class="container">
-        <div>© 2026 Shelton Mutambirwa. Built for Vercel + Linux lovers.</div>
+        <div>© 2026 Shelton Mutambirwa.</div>
         <div class="tagline">$ systemctl status career.service</div>
       </div>
     </footer>
+    <script src="assets/js/terminal.js"></script>
   </body>
 </html>
