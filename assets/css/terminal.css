@@ -2,15 +2,17 @@
 
 :root {
   color-scheme: dark;
-  --bg: #0b0f0b;
-  --bg-alt: #0f1610;
-  --surface: #131d14;
+  --bg: #0a0f0b;
+  --bg-alt: #0f1710;
+  --surface: #111a13;
+  --surface-strong: #17251b;
   --border: #1f2f1f;
-  --text: #d8f5d0;
+  --text: #e0f9da;
   --muted: #9ec9a1;
   --accent: #6eea6e;
   --accent-soft: #b4f5b2;
   --warning: #f2cf6f;
+  --glow: rgba(110, 234, 110, 0.18);
 }
 
 * {
@@ -21,9 +23,29 @@
 
 body {
   font-family: "JetBrains Mono", monospace;
-  background: var(--bg);
+  background: radial-gradient(circle at top, rgba(110, 234, 110, 0.08), transparent 50%), var(--bg);
   color: var(--text);
   line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.3;
+  z-index: 0;
 }
 
 img {
@@ -44,15 +66,18 @@ a:hover {
 .container {
   width: min(1120px, 92vw);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar {
   border-bottom: 1px solid var(--border);
-  background: rgba(11, 15, 11, 0.9);
+  background: rgba(7, 12, 8, 0.9);
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .navbar .container {
@@ -81,6 +106,10 @@ a:hover {
   font-size: 0.95rem;
 }
 
+.nav-links a {
+  color: var(--muted);
+}
+
 .nav-links a.active {
   color: var(--accent-soft);
   border-bottom: 2px solid var(--accent);
@@ -88,7 +117,7 @@ a:hover {
 }
 
 .hero {
-  padding: 4.5rem 0 3rem;
+  padding: 5rem 0 3.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
@@ -96,11 +125,46 @@ a:hover {
 }
 
 .terminal-card {
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(17, 26, 19, 0.96), rgba(12, 18, 13, 0.95));
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.terminal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 1.1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.terminal-dots span {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--border);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.terminal-dots span:nth-child(2) {
+  background: var(--warning);
+}
+
+.terminal-dots span:nth-child(3) {
+  background: var(--accent);
 }
 
 .prompt {
@@ -116,6 +180,7 @@ a:hover {
 .hero h1 {
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   margin-bottom: 0.8rem;
+  text-shadow: 0 0 18px var(--glow);
 }
 
 .hero p {
@@ -171,6 +236,12 @@ a:hover {
   border: 1px solid var(--border);
   padding: 1.25rem;
   border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .card h3 {
